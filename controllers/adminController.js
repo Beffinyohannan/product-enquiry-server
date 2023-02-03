@@ -114,7 +114,7 @@ const refreshToken = async(req,res,next)=>{
                      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
                      sameSite: "strict",
                  })
-                 .json({ success: true, message: "new pair of tokens created", refreshToken });
+                 .json({ success: true, message: "new pair of tokens created", refreshToken,accessToken });
          }
      );
 
