@@ -5,7 +5,7 @@ const verifyJwt =(req,res,next)=>{
     try {
         // console.log(req.headers.cookie);
         //checking if the cookies found in header
-        if(req.headers.accessToken){
+        if(req.headers.accesstoken){
 
             // const cookies = req.headers.cookie.split(/[ =]+/)
             // // console.log(cookies);
@@ -16,7 +16,7 @@ const verifyJwt =(req,res,next)=>{
             // //finding the index and accessing the authToken
             // const index = cookies.indexOf("accessToken")
             // const token = cookies[index+1]
-            const token = req.headers.accessToken
+            const token = req.headers.accesstoken
 
 
             //verfiying authToken with jwt
