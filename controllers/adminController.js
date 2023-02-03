@@ -37,7 +37,7 @@ const login = async (req, res, next) => {
           path: "/",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
           sameSite: "strict",
-            }).json({ success: true, refreshToken })
+            }).json({ success: true, refreshToken,accessToken })
     } catch (error) {
         console.log(error);
         next(error)
