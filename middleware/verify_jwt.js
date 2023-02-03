@@ -5,18 +5,18 @@ const verifyJwt =(req,res,next)=>{
     try {
         // console.log(req.headers.cookie);
         //checking if the cookies found in header
-        if(req.headers.cookie){
+        if(req.headers.accessToken){
 
-            const cookies = req.headers.cookie.split(/[ =]+/)
-            // console.log(cookies);
+            // const cookies = req.headers.cookie.split(/[ =]+/)
+            // // console.log(cookies);
 
-            //checking cookies has the accessToken
-            if(!cookies.includes("accessToken")) throw createError.NotFound("No accesstoken in header")
+            // //checking cookies has the accessToken
+            // if(!cookies.includes("accessToken")) throw createError.NotFound("No accesstoken in header")
            
-            //finding the index and accessing the authToken
-            const index = cookies.indexOf("accessToken")
-            const token = cookies[index+1]
-            // console.log(token);
+            // //finding the index and accessing the authToken
+            // const index = cookies.indexOf("accessToken")
+            // const token = cookies[index+1]
+            const token = req.headers.accessToken
 
 
             //verfiying authToken with jwt
@@ -33,7 +33,7 @@ const verifyJwt =(req,res,next)=>{
         }else{
 
             //throwing error if there is no cookies in header
-            throw createError.NotFound("No cookies in header")
+            throw createError.NotFound("No accessToken in header")
         }
     } catch (error) {
         //if any thing goes wrong with the try block send errors to the client
