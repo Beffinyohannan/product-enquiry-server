@@ -5,12 +5,12 @@ const axios = require('axios')
 
 
 const productEnquiry =async(req,res,next)=>{
-    // console.log(req.body);
-    const location =await axios.get('https://ipapi.co/json')
+    // console.log(req.body.currentLocation);
+    // const location =await axios.get('https://ipapi.co/json')
     // console.log(location.data,'qwerty');
-    const {name,email,phone,enquiry} = req.body
-    const {ip,city,country_name} = location.data
     try {
+        const {name,email,phone,enquiry} = req.body.enquiryData
+        const {ip,city,country_name} = req.body.currentLocation
         const isExist = await Enquiry.findOne({email:email})
         if(isExist) throw createError.Conflict("Email Already Used Once")
         const newEnquiry = new Enquiry({
