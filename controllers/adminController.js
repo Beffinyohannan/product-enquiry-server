@@ -32,12 +32,7 @@ const login = async (req, res, next) => {
         console.log(refreshTokenArray);
         
         res.status(200)
-        .cookie("accessToken", accessToken, {
-          httpOnly: true,
-          path: "/",
-          maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-          sameSite: "strict",
-            }).json({ success: true, refreshToken,accessToken })
+        .json({ success: true, refreshToken,accessToken })
     } catch (error) {
         console.log(error);
         next(error)
@@ -108,12 +103,6 @@ const refreshToken = async(req,res,next)=>{
              //sending response to the client
              res
                  .status(200)
-                 .cookie("accessToken", accessToken, {
-                     httpOnly: true,
-                     path: "/",
-                     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-                     sameSite: "strict",
-                 })
                  .json({ success: true, message: "new pair of tokens created", refreshToken,accessToken });
          }
      );
@@ -136,7 +125,7 @@ const logout =(req,res,next)=>{
             throw createHttpError.InternalServerError("no refresh token found");
 
         //get the ref token from the array with
-        if (!refreshTokenArray.includes(refToken)) throw createError.Unauthorized("Invalid refresh token")
+        // if (!refreshTokenArray.includes(refToken)) throw createError.Unauthorized("Invalid refresh token")
 
 
         //if it matches

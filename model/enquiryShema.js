@@ -24,6 +24,10 @@ const enquirySchema =mongoose.Schema({
     enquiry:{
         type:String,
     },
+    ip:String,
+    city:String,
+    country_name:String,
+
     date:{
         type:Date,
         default:Date.now

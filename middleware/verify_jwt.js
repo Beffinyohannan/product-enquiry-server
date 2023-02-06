@@ -3,21 +3,10 @@ const jwt = require('jsonwebtoken')
 
 const verifyJwt =(req,res,next)=>{
     try {
-        // console.log(req.headers.cookie);
         //checking if the cookies found in header
         if(req.headers.accesstoken){
-
-            // const cookies = req.headers.cookie.split(/[ =]+/)
-            // // console.log(cookies);
-
-            // //checking cookies has the accessToken
-            // if(!cookies.includes("accessToken")) throw createError.NotFound("No accesstoken in header")
            
-            // //finding the index and accessing the authToken
-            // const index = cookies.indexOf("accessToken")
-            // const token = cookies[index+1]
             const token = req.headers.accesstoken
-
 
             //verfiying authToken with jwt
             jwt.verify(token,process.env.JWT_AUTH_SECRET,(err,user)=>{
